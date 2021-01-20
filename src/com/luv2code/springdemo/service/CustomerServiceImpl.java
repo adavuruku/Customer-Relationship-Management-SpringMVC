@@ -33,8 +33,8 @@ public class CustomerServiceImpl implements CustomerService {
 	// @Transactional //when this is added u dont need to start and end transaction manually
 	@Transactional
 	@Override
-	public List<Customer> getCustomers() {
-		return customerDAO.getCustomers();
+	public List<Customer> getCustomers(int theSortField) {
+		return customerDAO.getCustomers(theSortField);
 	}
 
 	
