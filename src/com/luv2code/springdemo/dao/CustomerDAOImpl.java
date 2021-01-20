@@ -16,17 +16,18 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	// need to inject the session factory
 	//using autowired since factory is defined in spring-mvc-crud-demo-servlet.xml
-//	@Autowired
-//	private SessionFactory sessionFactory;
+	@Autowired
+	private SessionFactory sessionFactory;
 	
 	// @Transactional //when this is added u dont need to start and end transaction manually
+	@Transactional
 	@Override
 	public List<Customer> getCustomers() {
 		
 		// get the current hibernate session
-//		Session currentSession = sessionFactory.getCurrentSession();
+		Session currentSession = sessionFactory.getCurrentSession();
 		
-		Session currentSession =  HibernateUtil.getSessionFactory().openSession();
+//		Session currentSession =  HibernateUtil.getSessionFactory().openSession();
 				
 		// create a query  ... sort by last name
 		Query<Customer> theQuery = 
@@ -44,8 +45,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public void saveCustomer(Customer theCustomer) {
 
 		// get current hibernate session
-//		Session currentSession = sessionFactory.getCurrentSession();
-		Session currentSession =  HibernateUtil.getSessionFactory().openSession();
+		Session currentSession = sessionFactory.getCurrentSession();
+//		Session currentSession =  HibernateUtil.getSessionFactory().openSession();
 		// save/upate the customer ... finally LOL
 		currentSession.saveOrUpdate(theCustomer);
 		
@@ -55,8 +56,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public Customer getCustomer(int theId) {
 
 		// get the current hibernate session
-//		Session currentSession = sessionFactory.getCurrentSession();
-		Session currentSession =  HibernateUtil.getSessionFactory().openSession();
+		Session currentSession = sessionFactory.getCurrentSession();
+//		Session currentSession =  HibernateUtil.getSessionFactory().openSession();
 		// now retrieve/read from database using the primary key
 		Customer theCustomer = currentSession.get(Customer.class, theId);
 		

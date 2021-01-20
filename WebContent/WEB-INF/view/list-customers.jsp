@@ -55,7 +55,7 @@
 					<tr>
 						<td> ${tempCustomer.firstName} </td>
 						<td> ${tempCustomer.lastName} </td>
-						<td> ${tempCustomer.email} </td>
+						<td> ${tempCustomer.emailAdd} </td>
 						
 						<td>
 							<!-- display the update link -->
